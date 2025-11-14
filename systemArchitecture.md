@@ -21,6 +21,54 @@ This repository contains a frontend-only React + Vite SPA demo that uses local m
 ## Proposed backend & API (precise, actionable design)
 This section describes the minimal backend to integrate with the current frontend and how it should behave.
 
+**Key API endpoints**
+POST /api/v1/auth/register
+POST /api/v1/auth/login          -> returns access_token, refresh_token
+POST /api/v1/auth/token/refresh
+
+GET  /api/v1/users/me
+GET  /api/v1/users/:id
+
+GET  /api/v1/friends             -> list friend records, supports pagination/filter
+POST /api/v1/friends             -> add friend
+GET  /api/v1/friends/:id
+PUT  /api/v1/friends/:id
+DELETE /api/v1/friends/:id
+
+POST /api/v1/reminders           -> schedule one-off or recurring reminder
+GET  /api/v1/reminders?friendId=
+PUT  /api/v1/reminders/:id
+DELETE /api/v1/reminders/:id
+
+POST /api/v1/notifications/send  -> internal: send notification (used by worker)
+GET  /api/v1/health
+
+**API contracts / shapes **
+
+Friend:
+Json
+{
+  "id":"uuid",
+  "userId":"uuid",
+  "name":"string",
+  "contactInfo":{"email":"", "phone":""},
+  "lastContactedAt":"ISO8601",
+  "notes":"string",
+  "tags":["school","work"]
+}
+
+Reminder:
+
+{
+  "id":"uuid",
+  "userId":"uuid",
+  "friendId":"uuid",
+  "type":"email|push|in-app",
+  "schedule":{"type":"once|daily|weekly","cron":""},
+  "message":"string",
+  "status":"scheduled|sent|failed"
+}
+
 API endpoints (JSON REST)
 - GET /api/friends
   - Query: ?limit=&page=&q=
@@ -49,6 +97,31 @@ API endpoints (JSON REST)
 
 Error shape
 - 4xx/5xx responses use: { error: "Human message", code: "ERR_CODE" }
+
+**Justification for tech stack choices**
+
+Frontend: React + Vite (current)
+Why: Fast dev server, minimal config, modern build optimizations. React provides component model and huge ecosystem for UI/state management.
+Feasible for: SPA, prototyping, and production when paired with static hosting/CDN.
+Backend: Node + Express OR Python + FastAPI
+Node + Express
+Why: JavaScript/TypeScript stack parity with frontend, wide ecosystem, many developers comfortable with it.
+When to pick: If the team prefers JS/TS end-to-end and wants lightweight middleware control; good for real-time and event-driven integrations.
+Python + FastAPI
+Why: Fast development, excellent typing, automatic OpenAPI docs, high performance for Python frameworks.
+When to pick: If team prefers Python, wants automatic interactive docs, or will use Python for workers/data processing.
+Database: PostgreSQL
+Why: ACID, relational model suits friend/relationship data, mature migrations (Flyway/Prisma/Alembic), good for joins and analytics.
+Cache/Queue: Redis & RabbitMQ / AWS SQS
+Redis: session caching, rate-limiting, hot lookups (last-contact pages).
+Queue (RabbitMQ/SQS): reliable background job handling (send reminder emails/push).
+Worker: Celery / BullMQ / Sidekiq-like
+Why: Offload scheduled tasks, retry logic, scale independently, avoid blocking API requests.
+Hosting & infra
+Static frontend: S3 + CloudFront / Vercel / Netlify.
+API: containerized in ECS/EKS / GCP Cloud Run / Heroku.
+Database: RDS / Cloud SQL.
+Monitoring: Prometheus + Grafana, or hosted solutions (Datadog).
 
 Server-side rules
 - Input validation via Joi (Express) or Pydantic (FastAPI)
@@ -100,6 +173,9 @@ Technical tradeoffs
 
 ## Architecture diagram
 (visualize the components and flows)
+
+<img width="1855" height="772" alt="image" src="https://github.com/user-attachments/assets/e5be8e56-2075-4ab9-ba81-b987f526db65" />
+
 
 ```mermaid
 flowchart LR

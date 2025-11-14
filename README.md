@@ -1,4 +1,4 @@
-# Circle - Frontend (About App)
+# Circle 
 Circle is a simple app that helps you stay connected with the important people in your life. It reminds you when you haven’t reached out to friends in a while and makes it easy to check in, send a message, or set reminders — so friendships don’t fade over time.
 
 This folder contains a simple React + Vite frontend demo for Circle, a friendship maintenance app.
@@ -108,21 +108,7 @@ The current frontend uses temporary data to demonstrate the full experience visu
 6. Minimal, Fast UI
 Built with React + Vite for a lightweight, smooth interface.
 
-**🖼️ Figma Mockup**
 
-<img width="346" height="669" alt="image" src="https://github.com/user-attachments/assets/33a35cb2-4637-496b-8d82-bef019018052" />.
-
-
-🗂 What’s Inside This Frontend Folder
-
-This folder contains the frontend demo built with React + Vite.
-
-Quick start:
-
-1. Install dependencies: `npm install`
-2. Start dev server: `npm run dev`
-
-The UI is intentionally minimal — it demonstrates friend cards, last-contact tracking, and actions like "Remind me" and "Message". The backend is not yet implemented; the UI uses mock data.
 
 
 **Circle App Navigation Map**
@@ -286,6 +272,17 @@ _**This structure allows users to:**_
 - Navigate deeply into any feature via the bottom bar.
 - Flow naturally between related features (e.g., from a Circle to planning a Vacation).
 - Receive proactive nudges via the Connect screen that drive engagement with the app's core purpose.
+
+🗂 What’s Inside This Frontend Folder
+
+This folder contains the frontend demo built with React + Vite.
+
+Quick start:
+
+1. Install dependencies: `npm install`
+2. Start dev server: `npm run dev`
+
+The UI is intentionally minimal — it demonstrates friend cards, last-contact tracking, and actions like "Remind me" and "Message". The backend is not yet implemented; the UI uses mock data.
 
 Files:
 - `src/` — React source files

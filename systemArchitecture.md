@@ -18,7 +18,7 @@ This repository contains a frontend-only React + Vite SPA demo that uses local m
 
 ---
 
-## Proposed backend & API (precise, actionable design)
+## Backend & API (precise, actionable design)
 This section describes the minimal backend to integrate with the current frontend and how it should behave.
 
 **Key API endpoints**

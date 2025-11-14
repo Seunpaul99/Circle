@@ -1,4 +1,4 @@
-[Activities Planning Flow_text_20251114_d7cb95.txt](https://github.com/user-attachments/files/23554765/Activities.Planning.Flow_text_20251114_d7cb95.txt)[Circle screen_text_20251114_ff2154.txt](https://github.com/user-attachments/files/23554753/Circle.screen_text_20251114_ff2154.txt)[main_app_layout_text_20251114_0299b4.txt](https://github.com/user-attachments/files/23554740/main_app_layout_text_20251114_0299b4.txt)# Circle 
+# Circle 
 Circle is a simple app that helps you stay connected with the important people in your life. It reminds you when you haven’t reached out to friends in a while and makes it easy to check in, send a message, or set reminders — so friendships don’t fade over time.
 
 This folder contains a simple React + Vite frontend demo for Circle, a friendship maintenance app.
@@ -174,118 +174,21 @@ Visual Guide & Key Screens
 Here’s a wireframe-style layout of the main navigation screens a user would see.
 
 1. Main App Layout with Bottom Navigation
-[+------------------------------------+
-[Uploadin+------------------------------------+
-|                                    |
-|  🏠 HOME / DASHBOARD              |
-|                                    |
-|  +------------------------------+  |
-|  |  👋 Upcoming Reminders       |  |
-|  |  - Call Sarah - Tomorrow     |  |
-|  |  - Hike with Crew - Sat      |  |
-|  +------------------------------+  |
-|                                    |
-|  📝 Recent Activity               |
-|  • You checked in with Alex       |
-|  • Mark added a beach trip idea   |
-|                                    |
-|  🔄 Your Circles                  |
-|  +----------+  +----------+       |
-|  | Family   |  | Adventure|       |
-|  | 👨👩👧   |  | Crew     |       |
-|  | Last: 2d |  | Last: 1w |       |
-|  +----------+  +----------+       |
-|                                    |
-|  [ + Check-in ] [ 💬 Message ]    |
-|                                    |
-+------------------------------------+
-| 🏠 | 👥 | 🔄 | 🎯 | ✈️  | 👤     |  <-- Bottom Nav
-+------------------------------------+
-    |    |    |    |    |    |
-    |    |    |    |    |    Profile
-    |    |    |    |    Vacations
-    |    |    |    Activities
-    |    |    Connect
-    |    Circles
-    Homeg main_app_layout_text_20251114_0299b4.txt…]()
+()<img width="451" height="652" alt="Main App Layout with Bottom Navigation" src="https://github.com/user-attachments/assets/415f2e82-8fe3-43e3-a452-fb8d89a47f15" />
+
 
 2. Key Screen Examples
 Circles Screen:
-[+------------------------------------++Uploading Circle screen_text_20251114_ff2154.txt…]
-| 👥 Circles              [+ Button] |
-|                                    |
-|  🔍 Search Circles...             |
-|                                    |
-|  • Close Friends (5)              |
-|    👤👤👤 Last: 2 days ago        |
-|                                    |
-|  • Family (4)                     |
-|    👤👤👤👤 Last: 1 day ago       |
-|                                    |
-|  • College Buddies (8)            |
-|    👤👤👤👤... Last: 3 weeks ago  |  <-- "Nudge" indicator
-|                                    |
-+------------------------------------()
+<img width="436" height="322" alt="Circles Screen " src="https://github.com/user-attachments/assets/824fb3c1-09cb-46d0-87cf-460e11e6347e" />
 
 
 Connect Screen (The "Nudge" Center):
-+------------------------------------+
-| 🔄 Connect                         |
-|                                    |
-| ⏰ Time to Reach Out:              |
-|                                    |
-|  👤 David - College Buddies       |
-|    "Haven't spoken in 3 weeks"    |
-|    [💬 Message] [📅 Remind]       |
-|                                    |
-|  👤 Maria - Close Friends         |
-|    "Haven't connected in 2 weeks" |
-|    [✅ Check-in] [💬 Message]     |
-|                                    |
-|  Your Scheduled Reminders:         |
-|  ✓ Call Sarah - Tomorrow 10 AM    |
-|  ✓ Plan weekend hike - This Fri   |
-|                                    |
-+------------------------------------+
+<img width="282" height="385" alt="Connect Screen (The nudge Centre)" src="https://github.com/user-attachments/assets/6869d020-f7b2-49ca-8e62-2ef370c19d38" />
 
 
 Activities Planning Flow:
-[Up+------------------------------------+loading Activities Planning Flow_text_20251114_d7cb95.txt…]()
-| 🎯 Activities         [Plan New 🔽]|
-|                                    |
-|  Upcoming:                         |
-|  🏞️ Hike at Redwood Park - Sat    |
-|  with Adventure Crew               |
-|                                    |
-|  💡 Suggested Activities:          |
-|  🚶‍♂️ Nature Walk    ☕ Coffee     |
-|  🎳 Bowling        🎮 Game Night  |
-|  🏀 Basketball     🍽️ Dinner     |
-|                                    |
-|  Past Activities:                  |
-|  May 12: Coffee with Sarah ✅     |
-|  May 5: Game Night with Crew ✅   |
-|                                    |
-+------------------------------------+
+<img width="288" height="377" alt="Activities Planning Flow" src="https://github.com/user-attachments/assets/b10143e7-96e2-4eb8-86ab-37cd671ac9e7" />
 
-
-+------------------------------------+
-| 🎯 Activities         [Plan New 🔽]|
-|                                    |
-|  Upcoming:                         |
-|  🏞️ Hike at Redwood Park - Sat    |
-|  with Adventure Crew               |
-|                                    |
-|  💡 Suggested Activities:          |
-|  🚶‍♂️ Nature Walk    ☕ Coffee     |
-|  🎳 Bowling        🎮 Game Night  |
-|  🏀 Basketball     🍽️ Dinner     |
-|                                    |
-|  Past Activities:                  |
-|  May 12: Coffee with Sarah ✅     |
-|  May 5: Game Night with Crew ✅   |
-|                                    |
-+------------------------------------+
 
 _**This structure allows users to:**_
 

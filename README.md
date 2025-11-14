@@ -108,9 +108,10 @@ The current frontend uses temporary data to demonstrate the full experience visu
 6. Minimal, Fast UI
 Built with React + Vite for a lightweight, smooth interface.
 
-🖼️ Figma Mockup
+**🖼️ Figma Mockup**
 
 <img width="346" height="669" alt="image" src="https://github.com/user-attachments/assets/33a35cb2-4637-496b-8d82-bef019018052" />.
+
 
 🗂 What’s Inside This Frontend Folder
 

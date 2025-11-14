@@ -124,9 +124,164 @@ Quick start:
 
 The UI is intentionally minimal — it demonstrates friend cards, last-contact tracking, and actions like "Remind me" and "Message". The backend is not yet implemented; the UI uses mock data.
 
-Screenshot of the figma showing mockup wireframe of the Circle
+
+**Circle App Navigation Map**
+This diagram shows how a user would flow through the app to access its core features.
+flowchart TD
+    A[App Launch] --> B[Home Screen / Dashboard]
+
+    B --> C[Bottom Navigation Bar]
+
+    C --> B
+    C --> D[Circles Screen]
+    C --> E[Connect Screen]
+    C --> F[Activities Screen]
+    C --> G[Vacations Screen]
+
+    subgraph HomeScreen [Home Screen Actions]
+        B --> |Tap Circle Card| H[Circle Details]
+        B --> |Tap Quick Action| I[Log Activity]
+        B --> |Tap Reminder| E
+    end
+
+    subgraph CirclesSection [Circles Section]
+        D --> |Tap 'Create New'| J[Create New Circle]
+        D --> |Tap a Circle| H
+    end
+
+    subgraph ConnectSection [Connect Section]
+        E --> |Tap a Friend| K[Contact Friend]
+        E --> |Tap 'Set Reminder'| L[Set Custom Reminder]
+    end
+
+    subgraph ActivitiesSection [Activities Section]
+        F --> |Tap 'Plan New'| M[Plan Activity Flow]
+        F --> |Tap Activity| N[Activity Details]
+    end
+
+    subgraph VacationsSection [Vacations Section]
+        G --> |Tap 'Create New'| O[Vacation Planner Flow]
+        G --> |Tap Vacation| P[Vacation Details]
+    end
+
+    subgraph CircleDetails [Circle Details Screen]
+        H --> Q[Message Circle]
+        H --> M
+        H --> O
+        H --> R[View Members & Check-ins]
+    end
+
+    %% Styling for clarity
+    classDef primary fill:#4a86e8, color:white
+    classDef secondary fill:#6aa84f, color:white
+    classDef tertiary fill:#e69138, color:white
+    
+    class B,A primary
+    class D,E,F,G secondary
+    class H,M,O tertiary
+
+Visual Guide & Key Screens
+Here’s a wireframe-style layout of the main navigation screens a user would see.
+
+1. Main App Layout with Bottom Navigation
++------------------------------------+
+|                                    |
+|  🏠 HOME / DASHBOARD              |
+|                                    |
+|  +------------------------------+  |
+|  |  👋 Upcoming Reminders       |  |
+|  |  - Call Sarah - Tomorrow     |  |
+|  |  - Hike with Crew - Sat      |  |
+|  +------------------------------+  |
+|                                    |
+|  📝 Recent Activity               |
+|  • You checked in with Alex       |
+|  • Mark added a beach trip idea   |
+|                                    |
+|  🔄 Your Circles                  |
+|  +----------+  +----------+       |
+|  | Family   |  | Adventure|       |
+|  | 👨👩👧   |  | Crew     |       |
+|  | Last: 2d |  | Last: 1w |       |
+|  +----------+  +----------+       |
+|                                    |
+|  [ + Check-in ] [ 💬 Message ]    |
+|                                    |
++------------------------------------+
+| 🏠 | 👥 | 🔄 | 🎯 | ✈️  | 👤     |  <-- Bottom Nav
++------------------------------------+
+    |    |    |    |    |    |
+    |    |    |    |    |    Profile
+    |    |    |    |    Vacations
+    |    |    |    Activities
+    |    |    Connect
+    |    Circles
+    Home
+
+2. Key Screen Examples
+Circles Screen:
++------------------------------------+
+| 👥 Circles              [+ Button] |
+|                                    |
+|  🔍 Search Circles...             |
+|                                    |
+|  • Close Friends (5)              |
+|    👤👤👤 Last: 2 days ago        |
+|                                    |
+|  • Family (4)                     |
+|    👤👤👤👤 Last: 1 day ago       |
+|                                    |
+|  • College Buddies (8)            |
+|    👤👤👤👤... Last: 3 weeks ago  |  <-- "Nudge" indicator
+|                                    |
++------------------------------------+
+
+Connect Screen (The "Nudge" Center):
++------------------------------------+
+| 🔄 Connect                         |
+|                                    |
+| ⏰ Time to Reach Out:              |
+|                                    |
+|  👤 David - College Buddies       |
+|    "Haven't spoken in 3 weeks"    |
+|    [💬 Message] [📅 Remind]       |
+|                                    |
+|  👤 Maria - Close Friends         |
+|    "Haven't connected in 2 weeks" |
+|    [✅ Check-in] [💬 Message]     |
+|                                    |
+|  Your Scheduled Reminders:         |
+|  ✓ Call Sarah - Tomorrow 10 AM    |
+|  ✓ Plan weekend hike - This Fri   |
+|                                    |
++------------------------------------+
 
 
+Activities Planning Flow:
++------------------------------------+
+| 🎯 Activities         [Plan New 🔽]|
+|                                    |
+|  Upcoming:                         |
+|  🏞️ Hike at Redwood Park - Sat    |
+|  with Adventure Crew               |
+|                                    |
+|  💡 Suggested Activities:          |
+|  🚶‍♂️ Nature Walk    ☕ Coffee     |
+|  🎳 Bowling        🎮 Game Night  |
+|  🏀 Basketball     🍽️ Dinner     |
+|                                    |
+|  Past Activities:                  |
+|  May 12: Coffee with Sarah ✅     |
+|  May 5: Game Night with Crew ✅   |
+|                                    |
++------------------------------------+
+
+_**This structure allows users to:**_
+
+- Start quick from the Home screen.
+- Navigate deeply into any feature via the bottom bar.
+- Flow naturally between related features (e.g., from a Circle to planning a Vacation).
+- Receive proactive nudges via the Connect screen that drive engagement with the app's core purpose.
 
 Files:
 - `src/` — React source files

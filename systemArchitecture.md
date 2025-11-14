@@ -98,30 +98,7 @@ API endpoints (JSON REST)
 Error shape
 - 4xx/5xx responses use: { error: "Human message", code: "ERR_CODE" }
 
-**Justification for tech stack choices**
 
-Frontend: React + Vite (current)
-Why: Fast dev server, minimal config, modern build optimizations. React provides component model and huge ecosystem for UI/state management.
-Feasible for: SPA, prototyping, and production when paired with static hosting/CDN.
-Backend: Node + Express OR Python + FastAPI
-Node + Express
-Why: JavaScript/TypeScript stack parity with frontend, wide ecosystem, many developers comfortable with it.
-When to pick: If the team prefers JS/TS end-to-end and wants lightweight middleware control; good for real-time and event-driven integrations.
-Python + FastAPI
-Why: Fast development, excellent typing, automatic OpenAPI docs, high performance for Python frameworks.
-When to pick: If team prefers Python, wants automatic interactive docs, or will use Python for workers/data processing.
-Database: PostgreSQL
-Why: ACID, relational model suits friend/relationship data, mature migrations (Flyway/Prisma/Alembic), good for joins and analytics.
-Cache/Queue: Redis & RabbitMQ / AWS SQS
-Redis: session caching, rate-limiting, hot lookups (last-contact pages).
-Queue (RabbitMQ/SQS): reliable background job handling (send reminder emails/push).
-Worker: Celery / BullMQ / Sidekiq-like
-Why: Offload scheduled tasks, retry logic, scale independently, avoid blocking API requests.
-Hosting & infra
-Static frontend: S3 + CloudFront / Vercel / Netlify.
-API: containerized in ECS/EKS / GCP Cloud Run / Heroku.
-Database: RDS / Cloud SQL.
-Monitoring: Prometheus + Grafana, or hosted solutions (Datadog).
 
 Server-side rules
 - Input validation via Joi (Express) or Pydantic (FastAPI)
@@ -170,6 +147,40 @@ Technical tradeoffs
 - Redis adds operational complexity but is necessary for reliable scheduling at scale.
 
 ---
+
+**Feasibility & scalability — concrete recommendations**
+
+_Horizontal scaling_
+API: stateless; scale horizontally behind load balancer. Store sessions in JWT or store session data in Redis if server-side sessions needed.
+
+Workers: scale worker pool independently. Use visibility timeouts and concurrency tuning.
+
+DB: start with single primary + read replica(s) for scaling reads (e.g., friend lists). Use connection pooling (PgBouncer).
+
+_Caching_
+Use Redis for frequently-read data (friend lists, last-contact computations), and for rate-limiting and session caching.
+
+Cache TTLs: short for dynamic data; invalidate on updates.
+
+_Queue & reliability_
+Use durable queues with dead-letter queues for failed jobs. Implement idempotency for worker tasks to avoid duplicate sends.
+
+_Observability_
+Add structured logging, distributed tracing (OpenTelemetry), metrics (Prometheus), and alerts for SLO/SLI breaches (latency, error rates).
+
+Add request rate limiting, health checks, and circuit breakers for external provider failures.
+
+_Security_
+Use HTTPS everywhere, HSTS, secure cookie flags (if cookies used).
+
+Protect endpoints with proper scopes/roles. Sanitize inputs, validate payloads.
+
+Rotate secrets using a secrets manager (AWS Secrets Manager / HashiCorp Vault).
+
+_Cost & operational feasibility_
+Start small: single managed DB, single API container, small worker. Use managed services (RDS, SQS, SES) to reduce ops work.
+
+Use autoscaling rules for API and worker based on CPU/queue depth.
 
 ## Architecture diagram
 (visualize the components and flows)

@@ -174,19 +174,26 @@ Visual Guide & Key Screens
 Here’s a wireframe-style layout of the main navigation screens a user would see.
 
 1. Main App Layout with Bottom Navigation
+
+
 ()<img width="451" height="652" alt="Main App Layout with Bottom Navigation" src="https://github.com/user-attachments/assets/415f2e82-8fe3-43e3-a452-fb8d89a47f15" />
 
 
-2. Key Screen Examples
 Circles Screen:
+
+
 <img width="436" height="322" alt="Circles Screen " src="https://github.com/user-attachments/assets/824fb3c1-09cb-46d0-87cf-460e11e6347e" />
 
 
 Connect Screen (The "Nudge" Center):
+
+
 <img width="282" height="385" alt="Connect Screen (The nudge Centre)" src="https://github.com/user-attachments/assets/6869d020-f7b2-49ca-8e62-2ef370c19d38" />
 
 
 Activities Planning Flow:
+
+
 <img width="288" height="377" alt="Activities Planning Flow" src="https://github.com/user-attachments/assets/b10143e7-96e2-4eb8-86ab-37cd671ac9e7" />
 
 
